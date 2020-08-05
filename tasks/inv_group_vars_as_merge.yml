@@ -5,12 +5,12 @@
     path: "{{ inventory_dir }}/group_vars/{{ group_item }}.yml"
   register: group_vars_file
 
-- include_vars: 
+- include_vars:
     name: included_vars
     file: "{{ inventory_dir }}/group_vars/{{ group_item }}.yml"
   when: group_vars_file.stat.exists
 
-- name: 
+- name: Merge group_vars
   set_fact:
     group_vars: '{{ group_vars | combine(included_vars, recursive=True) }}'
   when: group_vars_file.stat.exists
