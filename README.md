@@ -1,4 +1,4 @@
-var-marger
+var-merger
 =========
 
 Роль объеденяет указанные массивы, точечно реализуя конфигурацию ANSIBLE_HASH_BEHAVIOUR = merge.
