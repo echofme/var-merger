@@ -1,0 +1,16 @@
+- name: Get file stat "{{ inventory_dir }}/group_vars/{{ group_item }}.yml" stat
+  delegate_to: localhost
+  become: false
+  stat:
+    path: "{{ inventory_dir }}/group_vars/{{ group_item }}.yml"
+  register: group_vars_file
+
+- include_vars: 
+    name: included_vars
+    file: "{{ inventory_dir }}/group_vars/{{ group_item }}.yml"
+  when: group_vars_file.stat.exists
+
+- name: 
+  set_fact:
+    group_vars: '{{ group_vars | combine(included_vars) }}'
+  when: group_vars_file.stat.exists

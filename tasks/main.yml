@@ -1,0 +1,9 @@
+---
+- name: Merge vars from playbook group_vars/all
+  include_tasks: inv_group_vars_all.yml
+
+- name: Merge vars from playbook group_vars
+  include_tasks: inv_group_vars.yml
+
+- name: Apply merged vars to the root
+  include_tasks: apply_vars.yml

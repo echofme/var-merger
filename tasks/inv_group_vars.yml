@@ -1,0 +1,21 @@
+- name: Default group_vars variable
+  set_fact:
+    group_vars: {}
+
+- name: Join vars from playbook group_vars as merge
+  include_tasks: inv_group_vars_as_merge.yml
+  when: merge_group_vars
+  loop: "{{ group_names }}"
+  loop_control:
+    loop_var: group_item
+
+- name: Join vars from playbook group_vars as priority
+  include_tasks: inv_group_vars_as_priority.yml
+  when: not merge_group_vars
+  loop: "{{ group_names }}"
+  loop_control:
+    loop_var: group_item
+
+- name: Merge inventory group_vars
+  set_fact:
+    merged_vars: '{{ merged_vars | combine(group_vars, recursive=True) }}'

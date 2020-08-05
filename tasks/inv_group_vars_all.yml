@@ -1,0 +1,7 @@
+- include_vars: 
+    name: included_vars
+    file: "{{ inventory_dir }}/group_vars/all.yml" 
+
+- name: 
+  set_fact:
+    merged_vars: '{{ merged_vars | combine(included_vars, recursive=True) }}'

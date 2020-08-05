@@ -1,0 +1,7 @@
+---
+# defaults file for roles/var-merger
+
+merged_vars: {}
+group_vars: {}
+to_merge: []
+merge_group_vars: false

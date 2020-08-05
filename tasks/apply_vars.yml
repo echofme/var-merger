@@ -1,0 +1,10 @@
+- name: Merged vars
+  debug:
+    msg: "{{ item }}:\n  {{ merged_vars[item] | to_nice_yaml  }}"
+  when: item in merged_vars
+  loop: "{{ to_merge }}"
+
+- name: Move merged vars to the root
+  set_fact: { "{{ item }}" : "{{ merged_vars[item] }}" }
+  when: item in merged_vars
+  loop: "{{ to_merge }}"
