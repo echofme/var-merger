@@ -1,4 +1,3 @@
----
 - name: Merge vars from playbook group_vars/all
   include_tasks: inv_group_vars_all.yml
 

@@ -5,7 +5,8 @@
     path: "{{ inventory_dir }}/group_vars/{{ group_item }}.yml"
   register: group_vars_file
 
-- include_vars:
+- name: Include variables of {{ group_item }}.yml file
+  include_vars:
     name: included_vars
     file: "{{ inventory_dir }}/group_vars/{{ group_item }}.yml"
   when: group_vars_file.stat.exists

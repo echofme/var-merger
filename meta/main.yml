@@ -1,6 +1,6 @@
 galaxy_info:
   author: Ildar Khaliullin
-  description: Merge target variable as ansible_hash_behaviour=merge 
+  description: Merge target variable as ansible_hash_behaviour=merge
   company: ABR-tech
   license: "MIT"
   min_ansible_version: 2.9
